@@ -8,22 +8,18 @@ public class UdpSender : MonoBehaviour
     
     UdpClient udpClient;
 
-    void Start()
+    public void Init()
     {
         udpClient = new UdpClient();
-
-        SendData("hello");
-        SendData("Oh.");
     }
 
-    void SendData (string data)
+    public void SendData (string data)
     {
         byte[] sendBytes = System.Text.Encoding.ASCII.GetBytes(data);
 
         try
         {
             udpClient.Send(sendBytes, sendBytes.Length, remoteHost, remotePort);
-            Debug.Log("Data was sent.");
         }
         catch (SocketException se)
         {
