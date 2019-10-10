@@ -4,7 +4,7 @@ public class HeadRotation : MonoBehaviour
 {
     public string GetServoAngle ()
     {
-        return $"{ConvertPitch(transform.localEulerAngles.x)}/{ConvertYaw(transform.localEulerAngles.y)}";
+        return $"{ConvertPitch(transform.localEulerAngles.x)},{ConvertYaw(transform.localEulerAngles.y)}";
     }
 
     int ConvertPitch (float unityAngleX)

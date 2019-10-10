@@ -3,7 +3,7 @@ using System.Net.Sockets;
 
 public class UdpSender : MonoBehaviour
 {
-    public string remoteHost = "192.168.10.86";
+    public string remoteHost = "";
     public int remotePort = 60000;
     
     UdpClient udpClient;
