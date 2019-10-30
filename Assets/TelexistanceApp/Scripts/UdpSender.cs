@@ -1,16 +1,18 @@
 ﻿using UnityEngine;
 using System.Net.Sockets;
 
-public class UdpSender : MonoBehaviour
+public class UdpSender
 {
-    public string remoteHost = "";
-    public int remotePort = 60000;
+    string _remoteHost = "";
+    int _remotePort = 60000;
     
-    UdpClient udpClient;
+    UdpClient _udpClient;
 
-    public void Init()
+    public UdpSender(string remoteHost, int remotePort)
     {
-        udpClient = new UdpClient();
+        _remoteHost = remoteHost;
+        _remotePort = remotePort;
+        _udpClient = new UdpClient();
     }
 
     public void SendData (string data)
@@ -19,7 +21,7 @@ public class UdpSender : MonoBehaviour
 
         try
         {
-            udpClient.Send(sendBytes, sendBytes.Length, remoteHost, remotePort);
+            _udpClient.Send(sendBytes, sendBytes.Length, _remoteHost, _remotePort);
         }
         catch (SocketException se)
         {
@@ -28,9 +30,9 @@ public class UdpSender : MonoBehaviour
         }
     }
 
-    void OnApplicationQuit()
+    public void UdpClientClose()
     {
-        udpClient.Close();
+        _udpClient.Close();
         Debug.Log("udp was closed.");
     }
 }
